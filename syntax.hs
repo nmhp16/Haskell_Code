@@ -62,3 +62,4 @@ main = do -- IO action
 -- To run in terminal:
 -- stack ghci
 -- :load syntax.hs
+-- :r -- reload
