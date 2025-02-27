@@ -1,4 +1,5 @@
 import Data.Array (Ix(range))
+import Data.String (IsString)
 
 -- Int -- bounded, word-size integer
 -- Integer -- unbounded integer
@@ -40,7 +41,7 @@ rangeStep = [1, 3..20] -- [1, 3, 5, 7, 9, 11, 13, 15, 17, 19]
 x:y:z = xs -- x = 1, y = 2.4, z = 4.0
 i:_:j = xs -- i = 1, j = 4
 
--- Pattern Matching
+-- Pattern Matching (Always idiomatic)
 -- Pattern matching is a way to destructure data
 -- It is a way to bind variables to parts of a data structure
 factorial :: Integer -> Integer -- type signature
@@ -64,6 +65,69 @@ letterGrade x
     | x >= 70 = "C"
     | x >= 60 = "D"
     | otherwise = "F"
+
+-- Bindings with where (Use with Guards)
+-- Syntax:
+letterGrade' :: Double -> Double -> Double -> String
+letterGrade' x y z
+    | average >= 90 = "A"
+    | average >= 80 = "B"
+    | average >= 70 = "C"
+    | average >= 60 = "D"
+    | otherwise = "F"
+    where average = (x + y + z) / 3
+
+-- Let Bindings
+-- Syntax:
+sumOfSqares x y = let xsquare = x * x
+                      ysquare = y * y  
+                    in xsquare + ysquare
+
+-- Case Expressions
+-- Syntax:
+letterGradeCase :: Int -> String
+letterGradeCase x = case x of
+    90 -> "A"
+    80 -> "B"
+    70 -> "C"
+    60 -> "D"
+    _ -> "F"
+
+index :: Eq a => a -> [a] -> Int
+index _ [] = -1 -- Index of whatever is not in the empty list is -1
+index y (x:xs)
+    | y == x = 0
+    | otherwise = let indexRest = index y xs
+                    in case indexRest of 
+                        -1 -> -1 
+                        _ -> 1 + indexRest
+
+-- Maybe Type
+-- Syntax:
+-- Haskell provides Maybe values, which allows us to deote missing results with Nothing. 
+-- Similar to Option in Scala
+-- Useful when computations fail to generate results
+
+-- Lazy Evaluation
+-- Syntax:
+-- Haskell is a lazy language, which means that it evaluates expressions only when they are needed.
+-- Arguments are not evaluated before they are passed to a function
+-- But only when their values are actually used.
+
+-- Lists are also lazy
+-- xs = [1..]
+-- take 3 xs => [1, 2, 3]
+-- length[1..7] => 7
+
+-- Functions are also lazy
+
+-- Higher-Order Functions
+-- Syntax:
+-- map :: (a -> b) -> [a] -> [b] : map square [1..10] => [1.0, 4.0, 9.0, 16.0, 25.0, 36.0, 49.0, 64.0, 81.0, 100.0]
+-- filter :: (a -> Bool) -> [a] -> [a] : filter even [1..10] => [2, 4, 6, 8, 10]
+-- foldl :: (a -> b -> a) -> a -> [b] -> a : foldl (+) 0 [1, 2, 3] => 6
+-- zip :: [a] -> [b] -> [(a, b)]  : zip [1, 2, 3] [4, 5, 6] => [(1, 4), (2, 5), (3, 6)]
+-- zipWith :: (a -> b -> c) -> [a] -> [b] -> [c] : zipWith (+) [1, 2, 3] [4, 5, 6] => [5, 7, 9]
 
 -- Main Function
 main :: IO () -- type signature
