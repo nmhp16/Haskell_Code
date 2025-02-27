@@ -52,8 +52,20 @@ factorial n = n * factorial (n - 1) -- recursive case
 swap :: [a] -> [a] -- type signature
 swap [] = [] -- base case
 swap [x] = [x] -- base case
-swap (x:y:rest) = y:x:rest -- recursive case
+swap (first:second:rest) = second:first:rest -- recursive case
 
+-- Guards 
+-- Guards allow us to define functions ased oncondition
+-- Syntax:
+letterGrade :: Int -> String
+letterGrade x
+    | x >= 90 = "A"
+    | x >= 80 = "B"
+    | x >= 70 = "C"
+    | x >= 60 = "D"
+    | otherwise = "F"
+
+-- Main Function
 main :: IO () -- type signature
 main = do -- IO action
     print (square 3) -- 9.0
