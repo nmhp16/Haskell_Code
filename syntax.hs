@@ -163,10 +163,24 @@ index y (x:xs)
 -- Syntax:
 -- addOne = (+1)
 -- addOne 1 => 2
-
 -- addTwo = (+2)
 -- addTwo 1 => 3
+-- :t (+) => (+) :: Num a => a -> a -> a
+-- :t (+1) => (+1) :: Num a => a -> a
+-- :t (.) => (.) :: (b -> c) -> (a -> b) -> a -> c
+-- > :t (>)
+-- (>) :: Ord a => a -> a -> Bool
+-- :t (>10)
+-- (>10) :: Num a => a -> Bool
 
+-- Composition with partial application
+-- Syntax:
+-- addOne = (+1)
+-- addOne 1 => 2
+-- addTwo = (+2)
+-- addTwo 1 => 3
+-- addOne . addTwo $ 1 => 5
+-- compute = (+1) . (*2) $ 5 => 11
 
 -- Main Function
 main :: IO () -- type signature
