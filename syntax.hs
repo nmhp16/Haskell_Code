@@ -1,5 +1,3 @@
-import Data.Array (Ix(range))
-import Data.String (IsString)
 
 -- Int -- bounded, word-size integer
 -- Integer -- unbounded integer
@@ -125,9 +123,50 @@ index y (x:xs)
 -- Syntax:
 -- map :: (a -> b) -> [a] -> [b] : map square [1..10] => [1.0, 4.0, 9.0, 16.0, 25.0, 36.0, 49.0, 64.0, 81.0, 100.0]
 -- filter :: (a -> Bool) -> [a] -> [a] : filter even [1..10] => [2, 4, 6, 8, 10]
--- foldl :: (a -> b -> a) -> a -> [b] -> a : foldl (+) 0 [1, 2, 3] => 6
 -- zip :: [a] -> [b] -> [(a, b)]  : zip [1, 2, 3] [4, 5, 6] => [(1, 4), (2, 5), (3, 6)]
 -- zipWith :: (a -> b -> c) -> [a] -> [b] -> [c] : zipWith (+) [1, 2, 3] [4, 5, 6] => [5, 7, 9]
+
+
+-- Folding
+-- foldl :: (a -> b -> a) -> a -> [b] -> a : foldl (+) 0 [1, 2, 3] => 6 -- Fold left
+-- foldr :: (a -> b -> b) -> b -> [a] -> b : foldr (-) 2 [1, 2, 3] => -2 -- Fold right
+
+-- fmap (+1) (index 'S' "Go Spartans!") => Just 4
+
+-- Function Composition
+-- In functional languages, composition is an operation on functions:
+-- It takes two functions as parameters and produces another function as its returned value.
+-- In Haskell, the built-in operator (.) is used to compose functions.
+
+-- Syntax:
+-- mystery = abs.head
+-- mystery [-1, 2, 3] => 1
+
+-- Currying
+-- Most programming lanuages allow functiosn to have multiple arguments
+-- Haskell restricts all functions to have just one argument, withoout losing expressiveness
+-- Currying allows us to have functions with multiple arguments
+-- Syntax:
+-- add :: Int -> Int -> Int
+-- add x y = x + y
+
+-- addCurried :: Int -> (Int -> Int)
+-- addCurried x y = x + y
+-- addCurried 1 2 => 3
+
+-- addUncurried :: (Int, Int) -> Int
+-- addUncurried (x, y) = x + y
+-- addUncurried (1, 2) => 3
+
+-- Partial Application: we don't need to provide all arguments to a function.
+-- Can create specialized fnction by partial application
+-- Syntax:
+-- addOne = (+1)
+-- addOne 1 => 2
+
+-- addTwo = (+2)
+-- addTwo 1 => 3
+
 
 -- Main Function
 main :: IO () -- type signature
