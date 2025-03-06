@@ -182,6 +182,59 @@ index y (x:xs)
 -- addOne . addTwo $ 1 => 5
 -- compute = (+1) . (*2) $ 5 => 11
 
+-- Types vs Typeclasses
+-- Support concrete types and typeclasses
+-- Syntax:
+-- :t (+) => (+) :: Num a => a -> a -> a -- Num is a typeclass
+-- :t (+1) => (+1) :: Num a => a -> a -- Num is a typeclass
+-- Typeclasses
+-- Family of similar types that provide implementations for
+-- some common functionality.
+-- Eq: == and /=
+-- Ord: <, <=, >, >=, max, min
+-- Show: types can be represented as strings
+-- Enum: enumerate types, can be used as range.
+-- Num: numeric types
+-- Integral: integer types
+-- Float: floating point types
+
+-- User Defined (Concrete) Types
+-- data TypeName = Constructor ... deriving (Show, Eq)
+-- Syntax:
+-- data Color = Red | Green | Blue
+-- without show instance it will throw an error
+
+-- Record Data Types
+-- Syntax:
+-- data Person = Person { name :: String, age :: Int } deriving Show
+-- person = Person { name = "John", age = 30 }
+
+-- Recursive Data Types
+-- Syntax:
+-- data Tree = Value Integer | Join Tree Tree deriving Show
+-- attach :: Tree -> Tree -> Tree
+-- attach t1 t2 = Join t1 t2
+
+-- Type Synonyms
+-- Syntax:
+-- type Grade = [Int]
+-- average :: Grades -> Int
+-- average [] = 0
+
+-- Type Inference 
+-- Syntax:
+-- Identifier should be assigned the same type through out its scope.
+
+-- Operator $
+-- Lowest precedence, same as parenthesis
+-- Syntax:
+-- compute = (+1) . (*2) $ 5
+-- square -4 => error
+-- square (-4) => 16
+-- square $ -4 => 16
+
+
+
 -- Main Function
 main :: IO () -- type signature
 main = do -- IO action
