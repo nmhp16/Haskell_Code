@@ -238,6 +238,19 @@ index y (x:xs)
 -- Specific tokens must be placed in speific olumns as on old punched card systems
 -- Lexical analyzer must kow about layout to find tokens
 
+-- Free Form Language
+-- Only the ordering tokens is important
+-- Format has no effect other than satisfying the principle of longest substring
+
+-- Python is a off-side rule language
+
+-- How do we specify tokens?
+-- Explicitly list them (if finite)
+-- Common to use regular expression
+-- Use lex
+-- Turn a regular expresssion into a scanner
+
+-- Regex101
 
 -- Main Function
 main :: IO () -- type signature
