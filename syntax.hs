@@ -233,8 +233,6 @@ index y (x:xs)
 -- square (-4) => 16
 -- square $ -4 => 16
 
-
-
 -- Main Function
 main :: IO () -- type signature
 main = do -- IO action
