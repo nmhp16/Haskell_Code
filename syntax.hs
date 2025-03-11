@@ -233,6 +233,12 @@ index y (x:xs)
 -- square (-4) => 16
 -- square $ -4 => 16
 
+-- Fixed Format Language
+-- Layout is critical
+-- Specific tokens must be placed in speific olumns as on old punched card systems
+-- Lexical analyzer must kow about layout to find tokens
+
+
 -- Main Function
 main :: IO () -- type signature
 main = do -- IO action
